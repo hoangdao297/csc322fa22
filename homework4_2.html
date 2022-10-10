@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>This is homework 4</title>
+</head>
+<body>
+<script src="https://threejs.org/build/three.js"></script>
+<script>
+	const scene = new THREE.Scene();
+	const camera = new THREE.PerspectiveCamera( 63, window.innerWidth/window.innerHeight, 0.1, 500 );
+
+	const renderer = new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	document.body.appendChild( renderer.domElement );
+
+	const p0=new THREE.Vector3(0,0,0);
+	const p1=new THREE.Vector3(1,0,0);
+	const p2=new THREE.Vector3(0,0,1);
+	const p3=new THREE.Vector3(1,0,1);
+	const p4=new THREE.Vector3(1,1,0);
+	const p5=new THREE.Vector3(1,1,1);
+	const p6=new THREE.Vector3(0,1,0);
+	const p7=new THREE.Vector3(0,1,1);
+
+	const setTri = [
+		p0,p1,p2,
+	  p3,p1,p4,
+	  p3,p5,p4,
+	  p6,p5,p7,
+	  p6,p0,p2,
+	  p7,p6,p1,
+	  p3,p7,p2,
+	  p6
+	];
+
+	const geometry1 = new THREE.BufferGeometry().setFromPoints( setTri );
+	const material1 = new THREE.MeshBasicMaterial(  { color: 0xADF3D9} );
+
+	const line = new THREE.Line( geometry1, material1 );
+
+	scene.add( line );
+
+
+	camera.position.z = 3;
+	renderer.render( scene, camera );
+
+	var animation = function () {
+		requestAnimationFrame( animation );
+
+		line.rotation.x += 0.002;
+		line.rotation.y += 0.002;
+
+		renderer.render( scene, camera );
+	};
+
+	animation();
+</script>
+</body>
+</html>
