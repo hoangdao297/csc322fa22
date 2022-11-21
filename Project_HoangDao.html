@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script >
+let planeX = -160;
+let planeY = 200;
+let cloudx=-200,cloudy=150;
+var r;
+var g;
+var b;
+function setup() {
+  createCanvas(900, 800);
+  r=random(0,255);
+  g=random(0,255);
+  b=random(0,255);
+}
+
+function draw() {
+  background(178,240,245);
+  var
+  white = color(255, 255, 255),
+  gray=color(172,174,174);
+  var
+  layer1 = [((mouseX-(900/2))/50),((mouseY-(800/2))/50)],
+  layer2 = [((mouseX-(900/2))/25),((mouseY-(800/2))/25)],
+  layer4 = [((mouseX-(900/1))/9),((mouseY-(800/2))/9)];
+  
+  //Road
+  fill(gray);
+  rect(layer4[0]-200, layer4[1]+600, 1200, 400);
+  var x=0;
+  for (let i = 0; i < 4; i++) {
+    fill(white);
+    rect(layer4[0]+x, layer4[1]+670, 150,50 );
+    x+=300
+  }
+  
+  //Sun
+  fill(255, 204, 0);
+  strokeWeight(2);
+  stroke(51);
+  ellipse (layer1[0]+750,layer1[1]+100, 125, 125);
+  fill(255, 153, 0);
+  noStroke ();
+  ellipse (layer1[0]+750,layer1[1]+100, 100, 100);
+  fill(255, 255, 102);
+  noStroke ();
+  ellipse (layer1[0]+750,layer1[1]+100, 80, 80);
+  
+  //Clouds
+  cloud(layer4[0]+cloudx, layer4[1]+cloudy,2.5);
+  cloud(layer4[0]+cloudx+300,layer4[1]+cloudy,2.5);
+  cloudx+=1;
+  if (cloudx-200>900) cloudx=-400
+  
+  //Airplane
+  strokeWeight(2);
+  stroke(51);
+  fill(r,g,b);
+  ellipse(layer2[0]+planeX, layer2[1]+planeY, 160, 42);
+  arc(layer2[0]+planeX - 60, layer2[1]+planeY-8, 25, 65,PI,0);
+  
+  fill(white);
+  triangle(layer2[0]+planeX+55,layer2[1]+planeY-3, layer2[0]+planeX+55, layer2[1]+planeY-10, layer2[0]+planeX+75, layer2[1]+planeY-3);
+
+  fill(175);
+  arc(layer2[0]+planeX-5 , layer2[1]+planeY - 20, 30, 70, PI, 0);
+  arc(layer2[0]+planeX-5 , layer2[1]+planeY , 30, 100, 0, PI);
+  
+  planeX+=1.8;
+  if (planeX-80>900) planeX=-160;
+  
+  //Airport Terminal
+  strokeWeight(2);
+  stroke(51);
+  fill(201,242,222);
+  rect(layer4[0]+200, layer4[1]+450, 500, 150);
+  
+  for (let i = 250; i < 650; i+=100) {
+    fill(white);
+    rect(layer4[0]+i, layer4[1]+500, 100,100 );
+  }
+  
+  for (let i = 250; i < 650; i+=100) {
+    fill(white);
+    rect(layer4[0]+i, layer4[1]+350, 100,100 );
+  }
+  
+  fill(122,233,178);
+  rect(layer4[0]+300, layer4[1]+300, 300, 50);
+
+  //Air traffic station
+  
+  fill(47,125,131);
+  rect(layer4[0]+700,layer4[1]+325,50,275);
+  
+  fill(g,b,r);
+  rect(layer4[0]+675,layer4[1]+250,100,75);
+  
+  fill(white);
+  for (let i = 675; i < 775; i+=20) {
+    rect(layer4[0]+i, layer4[1]+275, 20,25 );
+  }
+  
+  fill(255,0,0);
+  rect(layer4[0]+700,layer4[1]+230,50,20);
+  
+}
+
+function cloud(x, y,size) {
+	fill(255, 255, 255);
+	noStroke();
+	arc(x, y, 25 * size, 20 * size, PI, TWO_PI);
+	arc(x + 10, y, 25 * size, 45 * size, PI, TWO_PI);
+	arc(x + 25, y, 25 * size, 35 * size, PI, TWO_PI);
+	arc(x + 40, y, 30 * size, 20 * size, PI, TWO_PI);
+}
+</script>
+</body>
+</html>
+
