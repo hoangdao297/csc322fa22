@@ -53,8 +53,20 @@ function draw() {
   ellipse (layer1[0]+750,layer1[1]+100, 80+layer1[1], 80+layer1[1]);
   
   //Clouds
-  cloud(layer4[0]+cloudx, layer4[1]+cloudy,2.5);
-  cloud(layer4[0]+cloudx+300,layer4[1]+cloudy,2.5);
+  fill(255, 255, 255);
+  noStroke();
+  x=layer4[0]+cloudx; y=layer4[1]+cloudy;
+  size=2.5
+  arc(x, y, 25 * size, 20 * size, PI , TWO_PI);
+  arc(x + 10, y, 25 * size, 45 * size, PI , TWO_PI);
+  arc(x + 25, y, 25 * size, 35 * size, PI , TWO_PI);
+  arc(x + 40, y, 30 * size, 20 * size, PI , TWO_PI);
+  fill(255, 255, 255);
+  noStroke();
+  arc(x+300, y, 25 * size, 20 * size, PI , TWO_PI);
+  arc(x + 10+300, y, 25 * size, 45 * size, PI , TWO_PI);
+  arc(x + 25+300, y, 25 * size, 35 * size, PI , TWO_PI);
+  arc(x + 40+300, y, 30 * size, 20 * size, PI , TWO_PI);
   cloudx+=1;
   if (cloudx-200>900) cloudx=-400
   
@@ -112,14 +124,6 @@ function draw() {
   
 }
 
-function cloud(x, y,size) {
-	fill(255, 255, 255);
-	noStroke();
-	arc(x, y, 25 * size, 20 * size, PI, TWO_PI);
-	arc(x + 10, y, 25 * size, 45 * size, PI, TWO_PI);
-	arc(x + 25, y, 25 * size, 35 * size, PI, TWO_PI);
-	arc(x + 40, y, 30 * size, 20 * size, PI, TWO_PI);
-}
 </script>
 </body>
 </html>
